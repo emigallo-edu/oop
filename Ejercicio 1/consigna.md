@@ -11,6 +11,9 @@ Una biblioteca quiere llevar el control de los libros disponibles, los socios qu
 En pequeños grupos, modelen el sistema, definiendo las clases necesarias y sus relaciones.
 No es necesario implementar una app funcional, sino centrarse en el diseño de clases y sus relaciones.
 
+- Realizar un [diagrama de clases](https://es.wikipedia.org/wiki/Diagrama_de_clases)
+- Usar [Plant Text](https://www.planttext.com/)
+
 ### 🔍 Requisitos mínimos
 Deben representar al menos:
 
