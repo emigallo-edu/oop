@@ -486,3 +486,88 @@ class Calculadora
 | 1970s  | Estructurado                      | C, Pascal                  |
 | 1980s  | Orientado a Procesos              | Ada, Modula-2              |
 | 1990s  | Orientado a Objetos               | C++, Java                  |
+
+## Relaciones entre clases
+Las clases, al igual que los objetos, no existen de modo aislado. La Orientación a Objetos (POO) intenta modelar aplicaciones del mundo real y por lo tanto debe reflejar estas relaciones.
+Si dos objetos colaboran, a través del paso de mensajes, sus respectivas clases están relacionadas.
+
+>Existen tres tipos básicos de relaciones entre clases:
+>- La primera es la generalizacion/especializacion, que denota una relacion 'es un'. Por ej, una rosa 'es una' flor, lo que quiere decir que una rosa es una subclase especializada de una clase mas general, la de las flores.
+>- La segunda es la relacion 'composición/agregación' (también conocida como 'todo/parte'), que denota una relacicón 'parte de'. Asi, un petalo no es un tipo de flor; es parte de una flor.
+>- La tercera es la asociación, que denota alguna dependecia semántica entre clases de otros modos indpedientes, como entre las abejas y las flores.>
+>
+>Grady Booch [Booch, 94]
+
+### Relación de Composición/Agregación
+
+Es la relación que se constituye entre el todo y la parte. Se puede determinar que existe una relación de composición entre la clase A (el todo) y la clase B (la parte), si un objeto de la clase A “tiene un” objeto de la clase B.
+
+La relación de composición no abarca simplemente cuestiones físicas (libro y páginas), como “contiene un” (aparato digestivo y bolo alimenticio). Sino también, a relaciones lógicas que respondan adecuadamente al todo y a la parte como “posee un” (propietario y propiedades).
+
+Nota:
+- *todo* es sinónimo de *contenedor*. Es la clase *cliente* que utiliza a la otra clase.
+- *parte* es sinónimo de *contenido*. Es la clase que ofrece los servicios a *su/s cliente/s*.
+
+#### Composición
+Es una relación donde la vida del objeto de la clase *contenida* debe coincidir con la vida de la clase *contenedor*. Los componentes constituyen una parte del objeto *contenido* donde la supresión del objeto *contenedor* conlleva la supresión de los *contenidos*.
+Es una relación fuerte en el que los *contenidos* no pueden ser compartidos por varios *contenedores*.
+
+![](composicion.svg)
+
+#### Agregación
+Es una composición donde la vida del objetos de la clase *contenida* no coincide con la vida del objeto la clase *contenedora*. Las clases *contenidas* constituyen opcionalmente una parte de la clase *contenedora* y la destrucción del objeto de la clase *contenedora* no conlleva a la destrucción de los objetos de las clases  *contenidas*. También permite que los objetos de las clases *contenidas* puedan ser compartidos por varios objetos de las clases *contenedoras*.
+Es considerada una composición débil.
+
+> También es posible un tipo de agregación menos directo, denominado composición, que consiste en contención por referencia. En este caso, la clase Control de Temperatura sigue representando el todo, y una instancia de la clase Calentador sigue siendo una de sus partes, aunque ahora se debe acceder a ella indirectamente. Por lo tanto, la duración de estos dos objetos no está tan estrechamente vinculada como antes: podemos crear y destruir instancias de cada clase de forma independiente.
+>
+>Grady Booch [Booch, 94]
+
+Clases persona y familia: un persona puede pertenecer a la familia en que nació y a las que posteriormente formó y seguir vivo aunque ya no existan dichas familias.
+
+![](agregacion.png)
+
+#### Asociación
+Existe una relación de asociación entre la clase *contenedora* y la clase *contenida*, si un objeto de la clase *contenedora* disfruta de los servicios de un objeto determinado de la clase *contenida* (mensajes lanzados) para llevar a cabo la responsabilidad del objeto de la clase *contenedora* en diversos momentos creándose una dependencia del objeto de la clase *contenida*.
+Es la relación que perdura entre un cliente y un servidor determinado.
+
+![](asociacion.png)
+
+>Nuestro ejemplo introdujo una asociación uno a muchos, lo que significa que por cada instancia de la clase Vechicle, hay (un bote, que es un vehículo, no tiene ruedas) o más instancias de la clase Wheel, y por cada Wheel, hay exactamente un Vehicle. Esto denota la multiplicidad de la asociación. En la práctica, existen tres tipos comunes de multiplicidad en una asociación:
+> - uno-a-uno
+> - uno-a-muchos
+> - muchos-a-muchos
+>
+>Grady Booch [Booch, 94]
+
+#### Uso
+Es la relación que se establece momentáneamente entre una clase *contenedora* y una clase *contenida*.
+
+Existe una relación de uso entre la clase A, el *cliente*, y la clase B, el *servidor*, si un objeto de la clase A disfruta de los servicios de un objeto de la clase B (mensajes lanzados) para llevar a cabo la responsabilidad del objeto de la clase A en un momento dado sin dependencias futuras.
+
+##### Clientes y proveedores
+ >Las relaciones de uso entre clases corren paralelas a los enlaces «hermano-a-hermano» entre las instancias correspondientes de esas clases. Mientras que una asociación denota una conexión semántica bidireccional, una relación de uso es un posible refinamiento de una asociación, por el que se establece qué abstracción es el cliente y qué abstracción es el servidor que proporciona ciertos servicios.
+En realidad, una clase puede utilizar a otra de diversas formas. En el ejemplo, el TemperatureController usa a la Heater en la signatura de su interfaz. El TemperatureController podría usar también a otra clase como Forecaster en su implantación de la función miembro planificar. Ésta no es una afirmación de una relación todo/parte: la instancia de la clase
+>
+>Grady Booch [Booch, 94]
+
+![](uso.png)
+
+### Comparativa de Relaciones entre Clases por Colaboración
+![](comparativaRelaciones.jpg)
+
+### Herencia
+Si una clase transmite a otra todos sus miembros, atributos y métodos, para organizar una jerarquía de clasificación.
+
+### Herencia por Extensión
+La clase descendiente implementa todas las operaciones de la clase base, añadiendo o redefiniendo partes especializadas
+
+![](herenciaEspecializacion.svg)
+
+### Herencia por Implementación
+La especialización transforma el concepto de la clase base a la clase derivada
+
+![](herenciaExtensión.svg)
+
+>Las clases y los objetos son conceptos separados, pero íntimamente relacionados. Específicamente, cada objeto es la instancia de alguna clase, y cada clase tiene cero o más instancias. Para prácticamente todas las aplicaciones, las clases son estáticas; en ellas, su existencia, semántica y relaciones son fijas antes de la ejecución de un programa. De igual manera, la clase de la mayoría de los objetos es estática, lo que significa que una vez creado un objeto, su clase es fija. Sin embargo, en contraste, los objetos se crean y destruyen típicamente a un ritmo vertiginoso durante la vida útil de una aplicación.
+>
+>Grady Booch [Booch, 94]
