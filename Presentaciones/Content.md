@@ -223,42 +223,120 @@ Una evolución de la estructurada que organiza el programa en procedimientos o f
 
 Es un paradigma de programación en el que los objetos se utilizan como metáforas para representar las entidades reales de lo que queremos modelar.
 
-### Características:
+### Principales elementos
+
+#### Clase
+
+Una **clase** es un molde o plantilla que define cómo serán los objetos.
+
+```csharp
+public class Auto
+{
+    private string _marca;
+    private int _velocidad;
+
+    public Auto(string marca)
+    {
+        _marca = marca;
+    }
+
+    public void Acelerar()
+    {
+        _velocidad += 10;
+    }
+
+    public void Desacelerar()
+    {
+        _velocidad -= 10;
+    }
+    
+    public void Frenar ()
+    {
+        _velocidad = 0;
+    }
+}
+```
+
+## Atributo
+
+Un atributo (o campo, o propiedad según el lenguaje y el contexto) representa una característica o dato de un objeto. Es una variable que está asociada a la clase.
+En el ejemplo anterior, Marca y Velocidad son atributos de Auto.
+
+Se pueden pensar como sustantivos del objeto.
+
+## Método
+
+Un método es una función definida dentro de una clase que representa un comportamiento o acción que puede realizar un objeto.
+En el ejemplo anterior, Acelerar() es un método, porque modifica la velocidad del auto.
+
+Se puede pensar como verbos del objeto.
+
+<br>
+
+Una clase define qué datos tendrá un objeto (atributos) y qué puede hacer (métodos).
+
+```csharp
+Auto miAuto = new Auto("Ford");
+miAuto.Acelerar();
+```
+
+- miAuto es una instancia de la clase Auto.
+- Tiene su propia Marca y Velocidad.
+- Puede Acelerar() porque está definido en su clase.
+
+![](class-instance.jpg)
+
+## Manejo de Excepciones
+
+Una excepción es una situación anómala o inesperada que ocurre durante la ejecución del programa, como por ejemplo:
+- División por cero
+- Acceso a un índice inexistente en una lista o arreglo
+- Archivos que no se pueden abrir
+- Conexiones fallidas
+
+Cuando ocurre una excepción, el flujo de ejecución se interrumpe y, si no se maneja, termina en un error fatal.
+
+###### Estructura básica:
+```csharp
+try
+{
+    // Código que puede lanzar una excepción
+}
+catch (TipoDeExcepcion ex)
+{
+    // Manejo de la excepción
+}
+finally
+{
+    // Código que se ejecuta siempre, haya o no excepción
+}
+```
+
+###### Ejemplo simple:
+```csharp
+try
+{
+    int a = 10;
+    int b = 0;
+    int resultado = a / b;
+}
+catch (DivideByZeroException ex)
+{
+    Console.WriteLine("Error: No se puede dividir por cero.");
+}
+finally
+{
+    Console.WriteLine("Bloque finally ejecutado.");
+}
+```
+
+### Principios de la POO
+
 
 - Abstracción
 - Encapsulamiento
 - Herencia
 - Polimorfismo.
-
-### ¿Qué es una Clase?
-
-Una **clase** es un molde o plantilla que define cómo serán los objetos.
-
-```csharp
-class Persona
-{
-    public string Nombre;
-    public int Edad;
-
-    public void Saludar()
-    {
-        Console.WriteLine($"Hola, soy {Nombre}");
-    }
-}
-```
-
-![](class-instance.jpg)
-
-### Crear un Objeto
-
-```csharp
-Persona p = new Persona();
-p.Nombre = "Ana";
-p.Edad = 30;
-p.Saludar(); // Hola, soy Ana
-```
-
-### Principios de la POO
 
 #### 1. Encapsulamiento
 
