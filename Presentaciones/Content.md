@@ -566,6 +566,7 @@ class Calculadora
 | 1990s  | Orientado a Objetos               | C++, Java                  |
 
 ## Relaciones entre clases
+
 Las clases, al igual que los objetos, no existen de modo aislado. La Orientación a Objetos (POO) intenta modelar aplicaciones del mundo real y por lo tanto debe reflejar estas relaciones.
 Si dos objetos colaboran, a través del paso de mensajes, sus respectivas clases están relacionadas.
 
@@ -649,3 +650,92 @@ La especialización transforma el concepto de la clase base a la clase derivada
 >Las clases y los objetos son conceptos separados, pero íntimamente relacionados. Específicamente, cada objeto es la instancia de alguna clase, y cada clase tiene cero o más instancias. Para prácticamente todas las aplicaciones, las clases son estáticas; en ellas, su existencia, semántica y relaciones son fijas antes de la ejecución de un programa. De igual manera, la clase de la mayoría de los objetos es estática, lo que significa que una vez creado un objeto, su clase es fija. Sin embargo, en contraste, los objetos se crean y destruyen típicamente a un ritmo vertiginoso durante la vida útil de una aplicación.
 >
 >Grady Booch [Booch, 94]
+
+## Diseño de software orientado a objetos
+
+#### ¿Qué es el diseño de software?
+El diseño de software es la etapa del desarrollo en la que se define cómo va a estar estructurado y organizado un sistema o programa, antes de construirlo (y duramte la continua construcción/evolución). Es el puente entre el análisis del problema y la implementación del código.
+
+#### ¿Qué incluye?
+- Estructura del sistema (módulos, clases, funciones).
+- Relaciones entre componentes (herencia, composición, dependencias).
+- Definición de interfaces, entradas y salidas.
+- Selección de patrones de diseño y arquitecturas.
+
+#### ¿Qué persigue?
+El objetivo principal es crear sistemas robustos, mantenibles y reutilizables. En concreto:
+- Facilitar el mantenimiento del software a lo largo del tiempo.
+- Reducir la complejidad mediante separación de responsabilidades.
+- Mejorar la escalabilidad, permitiendo agregar nuevas funcionalidades sin romper lo existente.
+- Fomentar la reutilización de código.
+- Minimizar errores y facilitar pruebas.
+
+#### ¿Por qué conviene hacer un buen diseño?
+| Ventaja                          | Explicación                                                    |
+| -------------------------------- | -------------------------------------------------------------- |
+| Mantenibilidad                | El software puede adaptarse fácilmente a cambios.              |
+| Reutilización                 | Partes del código se pueden reaprovechar en otros sistemas.    |
+| Testeabilidad                 | Facilita escribir pruebas automáticas.                         |
+| Escalabilidad                  | Permite que el sistema crezca sin volverse inmanejable.        |
+| Ahorro de tiempo a largo plazo | Aunque lleva más tiempo al principio, evita problemas futuros. |
+
+
+#### ¿Qué son los principios de diseño de software?
+Los principios de diseño son guías o reglas generales que ayudan a tomar buenas decisiones durante el diseño del software. No son reglas estrictas, pero ayudan a lograr software de calidad.
+
+Son un conjunto de directrices y prácticas que los desarrolladores siguen para escribir código de manera eficiente y efectiva. Estos principios son especialmente relevantes en el desarrollo de software de alto nivel, donde la complejidad y la escala son desafíos constantes.
+
+- Modularidad: dividir el sistema en partes independientes.
+- Alta cohesión: cada pieza del software debe hacer una sola cosa.
+- Bajo acoplamiento: las piezas deben depender lo menos posible entre sí.
+- Extensibilidad (open-close): abierto a la extensión, cerrado al cambio.
+- Tamaño pequeño: por ej: métodos de hasta 10 líneas, no mas de 3 parámetros por método, no mas de 200 líneas de código por clase.
+- Uniformidad: todo el código tiene que estar creado bajo los mismos criterios.
+
+Algunos acrónimos populares:
+- DRY (Don't Repeat Yourself): evitar duplicación de código.
+- YAGNI (You Aren’t Gonna Need It): no implementar cosas que no se necesitan todavía.
+- KISS (Keep It Simple, Stupid): mantener el diseño lo más simple posible.
+- GRASP (General Responsibility Assignment Software Patterns) [ver](https://github.com/emigallo-edu/blog-tech/blob/main/docs/grasp/content.md)
+- SOLID
+    - Single responsability: única responsabilidad
+    - Open close: principio abierto cerrado
+    - Liskov: principio de sustitución de interfaz
+    - Interface segregation: segregación de interfaz
+    - Dependency inversion: intervsión de dependencias
+
+### Patrones de diseño
+Los patrones de diseño son soluciones habituales a problemas que ocurren con frecuencia en el diseño de software. Son como planos prefabricados que se pueden personalizar para resolver un problema de diseño recurrente en tu código.
+
+No se puede elegir un patrón y copiarlo en el programa como si se tratara de funciones o bibliotecas ya preparadas. El patrón no es una porción específica de código, sino un concepto general para resolver un problema particular. Puedes seguir los detalles del patrón e implementar una solución que encaje con las realidades de tu propio programa.
+
+#### ¿En qué consiste el patrón?
+La mayoría de los patrones se describe con mucha formalidad para que la gente pueda reproducirlos en muchos contextos. Aquí tienes las secciones que suelen estar presentes en la descripción de un patrón:
+
+- El propósito del patrón explica brevemente el problema y la solución.
+- La motivación explica en más detalle el problema y la solución que brinda el patrón.
+- La estructura de las clases muestra cada una de las partes del patrón y el modo en que se relacionan.
+- El ejemplo de código en uno de los lenguajes de programación populares facilita la asimilación de la idea que se esconde tras el patrón.
+- Algunos catálogos de patrones enumeran otros detalles útiles, como la aplicabilidad del patrón, los pasos de implementación y las relaciones con otros patrones.
+
+[Fuente](https://refactoring.guru/es/design-patterns)
+
+### Smells codes
+En programación de computadores, la hediondez del código (code smell en inglés, o también conocido por código que huele o apesta) es cualquier síntoma en el código fuente de un programa que posiblemente indica un problema más profundo. Las hediondeces del código usualmente no son bug de programación (errores) -- no son técnicamente incorrectos y en realidad no impiden que el programa funcione correctamente. En cambio, indican deficiencias en el diseño de software que puede ralentizar el desarrollo o aumentan el riesgo de errores o fallos en el futuro.
+
+### Smells codes mas comunes
+- Código duplicado: existe código idéntico o muy similar en más de una ubicación.
+- Método grande: un método, función o procedimiento que ha crecido hasta hacerse demasiado grande.
+- Clase grande: una clase que ha crecido hasta hacerse demasiado grande. El objeto Dios (del inglés: God Object) es, por ejemplo, una hediondez de código a nivel de clase común. Esta se caracteriza por adjuntar todo tipo de funciones que no suelen ir juntas, por lo que afectan el principio de "separación de intereses".[4]​
+- Demasiados parámetros: una larga lista de parámetros de un procedimiento o función empeora la legibilidad y la calidad del código.
+- Envidia de características: una clase que usa excesivamente métodos de otra clase.
+- Intimidad inadecuada: una clase que tiene dependencias en detalles de implementación de otra clase.
+- Herencia rechazada: una clase que sobreescribe un método de una clase base de tal manera que el contrato de la clase base no es honrado por la clase derivada. Ver principio de sustitución de Liskov.
+- Clase perezosa / gorrón: una clase que hace muy poco.
+- Complejidad artificiosa: Uso forzado de patrones de diseño demasiado complicados, donde uno más simple sería suficiente.
+- Identificadores excesivamente largos: en particular, el uso de convenciones de nombres para proporcionar desambiguación que debería estar implícita en la arquitectura de software.
+- Identificadores excesivamente cortos: el nombre de una variable debe reflejar su función, a menos que sea obvio.
+- Excesivo uso de literales: estos deben codificarse como constantes con nombre, para mejorar la legibilidad y para evitar errores de programación. Adicionalmente, los literales pueden y deben ser externalizados en archivos/scripts de recursos cuando sea posible, para facilitar la localización del software si se pretende implementar en diferentes regiones.
+- Supercallback: callback excesivos.
+
+[Fuente](https://refactoring.guru/refactoring/smells)
